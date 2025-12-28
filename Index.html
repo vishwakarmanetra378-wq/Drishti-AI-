@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="hi" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0078D4">
+    <title>Drishti AI - Your Vision Assistant</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Microsoft Azure SDKs -->
+    <script src="https://aka.ms/csspeech/jsbrowserpackageraw"></script>
+</head>
+<body>
+    <!-- Screen Reader Announcement Area -->
+    <div id="sr-announcer" aria-live="assertive" class="sr-only"></div>
+    
+    <!-- Main Interface -->
+    <main class="container" role="main">
+        <!-- Status Bar -->
+        <div class="status-bar" role="status">
+            <span id="connection-status">Azure: Connected</span>
+            <span id="battery-status">🔋 85%</span>
+        </div>
+        
+        <!-- Voice Interface -->
+        <section class="voice-interface" aria-label="Voice command interface">
+            <div class="instruction" id="instruction-text">
+                बोल कर कमांड दीजिए (Speak your command)
+            </div>
+            
+            <button id="mic-button" 
+                    class="mic-button" 
+                    aria-label="Start listening" 
+                    role="button"
+                    aria-live="polite">
+                <div class="mic-icon" aria-hidden="true">🎤</div>
+                <div class="mic-status" id="mic-status">सुन रहा हूं... (Listening...)</div>
+            </button>
+            
+            <div class="voice-feedback">
+                <div class="waveform" aria-hidden="true"></div>
+                <div id="last-command" class="last-command"></div>
+            </div>
+        </section>
+        
+        <!-- Environmental Info -->
+        <section class="environment-info" aria-label="Environmental information">
+            <div class="info-card" role="region" aria-label="Current scene">
+                <h2 class="sr-only">Current Environment</h2>
+                <div id="scene-description" class="scene-description">
+                    <!-- AI-generated description appears here -->
+                </div>
+            </div>
+            
+            <div class="hazard-alert" id="hazard-alert" role="alert" hidden>
+                <span class="alert-icon" aria-hidden="true">⚠️</span>
+                <span id="alert-text">Alert message</span>
+            </div>
+        </section>
+        
+        <!-- Quick Actions -->
+        <section class="quick-actions" aria-label="Quick actions">
+            <button class="action-btn" id="scan-environment" aria-label="Scan environment">
+                <span aria-hidden="true">📷</span>
+                <span class="sr-only">Scan Environment</span>
+            </button>
+            
+            <button class="action-btn" id="read-text" aria-label="Read text">
+                <span aria-hidden="true">📖</span>
+                <span class="sr-only">Read Text</span>
+            </button>
+            
+            <button class="action-btn" id="navigate" aria-label="Navigation mode">
+                <span aria-hidden="true">🧭</span>
+                <span class="sr-only">Start Navigation</span>
+            </button>
+            
+            <button class="action-btn" id="emergency" aria-label="Emergency assistance">
+                <span aria-hidden="true">🆘</span>
+                <span class="sr-only">Emergency Assistance</span>
+            </button>
+        </section>
+        
+        <!-- Settings & Feedback -->
+        <footer class="app-footer" role="contentinfo">
+            <button id="settings-btn" aria-label="Settings">
+                <span aria-hidden="true">⚙️</span>
+                <span class="sr-only">Settings</span>
+            </button>
+            
+            <div class="language-selector">
+                <span id="current-language" aria-label="Current language: Hindi">हिंदी</span>
+            </div>
+        </footer>
+    </main>
+    
+    <!-- Camera Modal -->
+    <div id="camera-modal" class="modal" hidden role="dialog" aria-label="Camera view">
+        <div class="modal-content">
+            <video id="camera-feed" autoplay playsinline></video>
+            <button id="capture-btn" aria-label="Capture image">Capture</button>
+            <button id="close-camera" aria-label="Close camera">Close</button>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+                                                                </html>
